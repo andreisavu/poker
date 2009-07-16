@@ -1,0 +1,59 @@
+
+Poker - Find the winner
+-----------------------
+
+Find the winning hand
+
+Why this demo app?
+------------------
+
+Learning how to write clean and maintainable code.
+Each commit is a step from the TDD development cycle.
+
+Read more about TDD at http://en.wikipedia.org/wiki/Test-driven_development
+
+Inspired by AgileWorks http://www.agileworks.ro/bucuresti-agile-scrum-more/
+You can find the C# version at http://www.agileworks.ro/assets/Poker.zip
+
+Input file sample
+-----------------
+
+2H 3D 5S 9C KD 2C 3H 4S 8C AH
+2H 4S 4C 2D 4H 2S 8S AS QS 3S
+2H 3D 5S 9C KD 2C 3H 4S 8C KH
+2H 3D 5S 9C KD 2D 3H 5C 9S KH
+
+2H 3D 5S 9C KD 2C 3H 4S 8C AH
+-- -- -- -- --|-- -- -- -- --
+ white hand   |  black hand
+
+Expected output file
+---------------------
+
+White wins.
+Black wins.
+Black wins.
+Tie.
+
+Card encodings
+--------------
+
+Format: two chars [card_value][card_color]
+
+[card_value] = [2-9,T,J,Q,K,A]
+    T - Ten, J - Jack, Q - Queen, K - King, A - Ace
+
+[card_color] = [S,D,H,C]
+    S - Spades, D - Diamonds, H - Hearts, C - Clubs
+
+Documentation
+-------------
+
+Winning poker hands: http://www.poker.com/poker-hands/ 
+
+Files
+-----
+
+checker.py  - parse input file (or stdin) and output to stdout winners
+poker.py    - poker library file
+
