@@ -17,8 +17,8 @@ class CardColor:
             'H' : 'Hearts',
             'C' : 'Clubs'
         }
-        return colors_map[self._color]
-            
+        return colors_map[self._color]     
+
 
 class CardValue:
 
