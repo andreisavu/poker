@@ -8,7 +8,10 @@ Why this demo app?
 ------------------
 
 Learning how to write clean and maintainable code.
-Each commit is a step from the TDD development cycle.
+Each commit is a step from the TDD development cycle:
+ Red(failing test) 
+ Green(all tests working)
+ Refactor(make the code beautiful while keeping the tests working)
 
 Read more about TDD at http://en.wikipedia.org/wiki/Test-driven_development
 
