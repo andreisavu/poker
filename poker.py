@@ -11,7 +11,7 @@ class Card:
         >>> c = Card('2D')
 
     Display string representation
-        >>> c
+        >>> str(c)
         '2D'
     """
    
@@ -19,7 +19,7 @@ class Card:
     color = property(lambda self: self._color)
 
     def __init__(self, card=None):
-        self.card = card
+        self._card = card
         if card:
             self.parse(card)
         else:
@@ -33,6 +33,9 @@ class Card:
         If the parsing fails the function will raise ValueError
         """
         pass
+
+    def __str__(self):
+        return self._card
 
 if __name__ == '__main__':
     import doctest
