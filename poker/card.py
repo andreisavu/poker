@@ -1,6 +1,8 @@
 
 class CardColor:
 
+    color = property(lambda self:self._color)
+
     def __init__(self, color):
         self.parse(color)
 
