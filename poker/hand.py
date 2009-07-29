@@ -16,7 +16,10 @@ class Hand:
 
         self.cards = []
         for card in cards:
-            self.cards.append(Card(card))
+            c = Card(card)
+            if c in self.cards:
+                raise ValueError('Duplicate card in one hand')
+            self.cards.append(c)
 
     def get_card(self, n):
         return self.cards[n-1]
