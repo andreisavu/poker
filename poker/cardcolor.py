@@ -13,6 +13,8 @@ class CardColor:
         self._color = color
 
     def __eq__(self, card):
+        if not isinstance(card,CardColor):
+            raise ValueError('Trying to compare incompatible types')
         return self._color == card.color
 
     def __ne__(self, card):
