@@ -30,12 +30,16 @@ class CardValue:
         self._score = self._values_score_map[value] 
 
     def __eq__(self, card):
+        if not isinstance(card, CardValue):
+            raise ValueError('Trying to compare incompatible types')
         return self._score == card.score
 
-    def __neq__(self, card):
+    def __ne__(self, card):
         return not (self == card)
 
     def __lt__(self, card):
+        if not isinstance(card, CardValue):
+            raise ValueError('Trying to compare incompatible types')
         return self._score < card._score
 
     def __le__(self, card):
