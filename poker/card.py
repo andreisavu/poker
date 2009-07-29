@@ -12,6 +12,12 @@ class CardColor:
             raise ValueError('Unknown color')
         self._color = color
 
+    def __eq__(self, card):
+        return self._color == card.color
+
+    def __neq__(self, card):
+        return not (self == card)
+
     def __str__(self):
         colors_map = {
             'S' : 'Spades', 
@@ -81,7 +87,8 @@ class Card:
             raise ValueError('Unknown card format')
         self._value = CardValue(card[0])
         self._color = CardColor(card[1])
-        pass
+
+    
 
     def __str__(self):
         return self._card
