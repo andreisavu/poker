@@ -94,6 +94,26 @@ class TestCardValue(unittest.TestCase):
             thrown = True
         self.assertTrue(thrown)
 
+    def testEquals(self):
+        c1 = CardValue('A')
+        c2 = CardValue('A')
+        self.assertEquals(c1,c2)
+
+    def testNotEqual(self):
+        c1 = CardValue('3')
+        c2 = CardValue('4')
+        self.assertNotEquals(c1,c2)
+
+    def testGreater(self):
+        c1 = CardValue('A')
+        c2 = CardValue('K')
+        self.assertTrue(c1 > c2)
+    
+    def testSmaller(self):
+        c1 = CardValue('2')
+        c2 = CardValue('J')
+        self.assertTrue( c1 < c2)
+
 if __name__ == '__main__':
     unittest.main()
 

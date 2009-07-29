@@ -29,6 +29,24 @@ class CardValue:
         self._value = value
         self._score = self._values_score_map[value] 
 
+    def __eq__(self, card):
+        return self._score == card.score
+
+    def __neq__(self, card):
+        return not (self == card)
+
+    def __lt__(self, card):
+        return self._score < card._score
+
+    def __le__(self, card):
+        return (self < card) or (self == card)
+
+    def __gt__(self, card):
+        return not (self <= card)
+
+    def __ge__(self, card):
+        return not (self < card)
+
     def __str__(self):
         if self._value in [str(x) for x in range(2,10)]:
             return self._value
