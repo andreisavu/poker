@@ -122,6 +122,14 @@ class TestCardValue(unittest.TestCase):
         c2 = CardValue('A')
         self.assertEquals(c1,c2)
 
+    def testEqualsFail_NotSameClass(self):
+        c1 = CardValue('A')
+        try:
+            self.assertEquals(c1, 'A')
+            self.assertTrue(False)
+        except ValueError:
+            pass
+
     def testNotEqual(self):
         c1 = CardValue('3')
         c2 = CardValue('4')
