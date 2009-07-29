@@ -25,7 +25,23 @@ class Card:
         self._value = CardValue(card[0])
         self._color = CardColor(card[1])
 
+    def __eq__(self, card):
+        pass
     
+    def __ne__(self,card):
+        return not (self == card)
+
+    def __lt__(self, card):
+        return self._value < card.value
+
+    def __le__(self, card):
+        return (self < card) or (self == card)
+
+    def __gt__(self, card):
+        return not (self <= card)
+
+    def __ge__(self, card):
+        return not (self < card)
 
     def __str__(self):
         return self._card

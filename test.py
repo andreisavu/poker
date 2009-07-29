@@ -29,6 +29,21 @@ class TestHand(unittest.TestCase):
             thrown = True
         self.assertTrue(thrown)
 
+class TestCard(unittest.TestCase):
+    
+    def testParse(self):
+        c = Card('2D')
+        self.assertEquals(str(c.value), '2')
+        self.assertEquals(str(c.color), 'Diamonds')
+        
+    def testParseFail(self):
+        thrown = False
+        try:
+            c = Card('2X')
+        except ValueError, e:
+            thrown = True
+        self.assertTrue(thrown)
+
 class TestCardColor(unittest.TestCase):
 
     def testParse(self):
@@ -54,7 +69,7 @@ class TestCardColor(unittest.TestCase):
         c1 = CardColor('S')
         c2 = CardColor('S')
         self.assertEquals(c1, c2)
-
+        
     def testNotEqual(self):
         c1 = CardColor('S')
         c2 = CardColor('D')

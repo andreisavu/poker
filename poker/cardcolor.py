@@ -9,7 +9,7 @@ class CardColor:
     def parse(self, color):
         allowed_colors = ['S', 'D', 'H', 'C']
         if color not in allowed_colors:
-            raise ValueError('Unknown color')
+            raise ValueError("Unknown color: %s" % color)
         self._color = color
 
     def __eq__(self, card):
