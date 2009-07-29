@@ -8,7 +8,7 @@ class TestHand(unittest.TestCase):
         h = Hand(['2H', '3D', '5S', '9C', 'KD'])
 
         self.assertEquals(str(h.get_card(3).value), '5')
-        self.assertEquals(str(h.get_card(3).score), 'Spades')
+        self.assertEquals(str(h.get_card(3).color), 'Spades')
         self.assertEquals(str(h.get_card(5).value), 'King')
 
 class TestCardColor(unittest.TestCase):
