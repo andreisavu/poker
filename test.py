@@ -11,6 +11,24 @@ class TestHand(unittest.TestCase):
         self.assertEquals(str(h.get_card(3).color), 'Spades')
         self.assertEquals(str(h.get_card(5).value), 'King')
 
+    def testParseFail_NotEnoughCards(self):
+        thrown = False
+        cards = ['2H', '3D', '5S']
+        try:
+            h = Hand(cards)
+        except ValueError, e:
+            thrown = True
+        self.assertTrue(thrown)
+
+    def testParseFail_InvalidCard(self):
+        thrown = False
+        cards = ['2H', '3D', '5S', '9S', 'KX']
+        try:
+            h = Hand(cards)
+        except ValueError, e:
+            thrown = True
+        self.assertTrue(thrown)
+
 class TestCardColor(unittest.TestCase):
 
     def testParse(self):
