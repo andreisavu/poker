@@ -59,7 +59,17 @@ class TestCardColor(unittest.TestCase):
         c1 = CardColor('S')
         c2 = CardColor('D')
         self.assertNotEquals(c1,c2)
-        
+
+    def testOrderingFail(self):
+        c1 = CardColor('S')
+        c2 = CardColor('D')
+        thrown = False
+        try:
+            b = c1 < c2
+        except Exception, e:
+            thrown = True
+        self.assertTrue(thrown)
+
 class TestCardValue(unittest.TestCase):
 
     def testParse(self):
