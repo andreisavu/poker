@@ -69,7 +69,11 @@ class TestCardColor(unittest.TestCase):
         c1 = CardColor('S')
         c2 = CardColor('S')
         self.assertEquals(c1, c2)
-        
+
+    def testEqualFail_NotSameClass(self):
+        c1 = CardColor('S')
+        self.assertEquals(c1, 'S')
+
     def testNotEqual(self):
         c1 = CardColor('S')
         c2 = CardColor('D')
