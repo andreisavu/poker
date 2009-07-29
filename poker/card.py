@@ -26,12 +26,16 @@ class Card:
         self._color = CardColor(card[1])
 
     def __eq__(self, card):
-        pass
+        if not isinstance(card, Card):
+            raise ValueError('Trying to compare incompatible types')
+        return self._value == card.value and self._color == card.color
     
     def __ne__(self,card):
         return not (self == card)
 
     def __lt__(self, card):
+        if not isinstance(card, Card):
+            raise ValueError('Trying to compare incompatible types')
         return self._value < card.value
 
     def __le__(self, card):
