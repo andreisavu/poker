@@ -20,6 +20,14 @@ class TestHand(unittest.TestCase):
             thrown = True
         self.assertTrue(thrown)
 
+    def testParseFail_DuplicateCard(self):
+        cards = ['2H', '3D', '5S', '2S', '2H']
+        try:
+            h = Hand(cards)
+            self.assertTrue(False)
+        except ValueError:
+            pass
+
     def testParseFail_InvalidCard(self):
         thrown = False
         cards = ['2H', '3D', '5S', '9S', 'KX']
