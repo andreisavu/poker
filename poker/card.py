@@ -40,7 +40,7 @@ class CardValue:
         'A' : 15
     }
 
-    value = property(lambda self: self._value, lambda self,v:self.parse(v))
+    value = property(lambda self: self._value)
     score = property(lambda self: self._score)
 
     def __init__(self, value):
