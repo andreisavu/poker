@@ -36,3 +36,14 @@ class TestHand(unittest.TestCase):
         except ValueError, e:
             thrown = True
         self.assertTrue(thrown)
+
+    def testContainsAny(self):
+        h1 = Hand(['2H', '3D', '5S', '9C', 'KD'])
+        h2 = Hand(['2D', '5D', '9C', 'AC', 'KS'])
+        self.assertTrue(h1.contains_any(h2))
+
+    def testDoesNotContainAny(self):
+        h1 = Hand(['2H', '3D', '5S', '9C', 'KD'])
+        h2 = Hand(['2D', '5D', '6C', 'AC', 'KS'])
+        self.assertFalse(h1.contains_any(h2))
+

@@ -5,5 +5,8 @@ class Game:
         self.hands = []
         
     def add_hand(self, hand):
-        pass
+        for h in self.hands:
+            if h.contains_any(hand):
+                raise ValueError('Duplicate card not allowed')
+        self.hands.append(hand)
     

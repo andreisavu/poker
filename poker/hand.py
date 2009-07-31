@@ -24,3 +24,10 @@ class Hand:
     def get_card(self, n):
         return self.cards[n-1]
 
+    def contains_any(self, hand):
+        for card in hand.cards:
+            if card in self.cards:
+                return True
+        return False
+
+
