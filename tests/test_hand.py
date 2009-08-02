@@ -51,3 +51,7 @@ class TestHand(unittest.TestCase):
         h1 = Hand(['2H', '3D', '5S', '9C', 'KD'], 'White')
         self.assertEquals(h1.name, 'White')
         
+    def testGetHighestCard(self):
+        c = Card('KD')
+        h = Hand(['2H', '3D', '5S', '9C', str(c)])
+        self.assertEquals(c, h.get_highest_card())

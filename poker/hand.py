@@ -5,7 +5,7 @@ class Hand:
     """
     A full poker hand
 
-    It cotains 5 cards. The order is not important.
+    It contains 5 cards. The order is not important.
     """
     
     MAX_SIZE = 5
@@ -33,4 +33,5 @@ class Hand:
                 return True
         return False
 
-
+    def get_highest_card(self):
+        pass
