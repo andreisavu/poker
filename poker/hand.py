@@ -34,4 +34,4 @@ class Hand:
         return False
 
     def get_highest_card(self):
-        pass
+        return sorted(self.cards)[-1]
