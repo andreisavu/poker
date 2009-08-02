@@ -47,3 +47,7 @@ class TestHand(unittest.TestCase):
         h2 = Hand(['2D', '5D', '6C', 'AC', 'KS'])
         self.assertFalse(h1.contains_any(h2))
 
+    def testCreateWithName(self):
+        h1 = Hand(['2H', '3D', '5S', '9C', 'KD'], 'White')
+        self.assertEquals(h1.name, 'White')
+        

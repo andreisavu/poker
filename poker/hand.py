@@ -9,8 +9,10 @@ class Hand:
     """
     
     MAX_SIZE = 5
+    
+    name = property(lambda self:self._name)
 
-    def __init__(self, cards):
+    def __init__(self, cards, name=''):
         if len(cards) != Hand.MAX_SIZE:
             raise ValueError("A hand should contain %d cards" % Hand.MAX_SIZE)
 
@@ -20,6 +22,7 @@ class Hand:
             if c in self.cards:
                 raise ValueError('Duplicate card in one hand')
             self.cards.append(c)
+        self._name = name
 
     def get_card(self, n):
         return self.cards[n-1]
