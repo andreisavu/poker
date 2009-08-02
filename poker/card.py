@@ -25,10 +25,16 @@ class Card:
         self._value = CardValue(card[0])
         self._color = CardColor(card[1])
 
+    def same_suite(self, card):
+        return self._color == card.color
+
+    def same_value(self, card):
+        return self._value == card.value
+
     def __eq__(self, card):
         if not isinstance(card, Card):
             raise ValueError('Trying to compare incompatible types')
-        return self._value == card.value and self._color == card.color
+        return self.same_suite(card) and self.same_value(card)
     
     def __ne__(self,card):
         return not (self == card)
