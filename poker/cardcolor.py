@@ -12,6 +12,13 @@ class CardColor:
             raise ValueError("Unknown color: %s" % color)
         self._color = color
 
+    def next(self):
+        seq = ['S', 'D', 'H', 'C', 'S']
+        for i in range(0, len(seq)):
+            if seq[i] == self._color:
+                break
+        return CardColor(seq[i+1])
+
     def __eq__(self, card):
         if not isinstance(card,CardColor):
             raise ValueError('Trying to compare incompatible types')

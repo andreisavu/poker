@@ -31,7 +31,10 @@ class CardValue:
         
     def next(self):
         new_score = (self._score + 1) % 16
-        if new_score < 2: new_score += 2
+        if new_score < 2: 
+            new_score += 2
+        if new_score == 11: 
+            new_score = 12
         keys = [k for k,v in self._values_score_map.items() if v == new_score]
         return CardValue(keys[0])
 

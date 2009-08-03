@@ -71,6 +71,14 @@ class TestHand(unittest.TestCase):
     def testAllSameColor(self):
         self.assertTrue(self.royal_flush.all_same_color())
 
+    def testIsRoyalFlush(self):
+        v = self.royal_flush.is_royal_flush()
+        self.assertTrue(v)
+
+    def testStraightFlush(self):
+        v = self.straight_flush.is_straight_flush()
+        self.assertTrue(v)
+
     def testScore(self):
         self.assertTrue(self.royal_flush.score > self.straight_flush.score)
 

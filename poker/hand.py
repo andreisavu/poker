@@ -31,7 +31,7 @@ class Hand:
 
     def contains_any(self, hand):
         for card in hand.cards:
-            if card in self.cards:
+            if card in self._cards:
                 return True
         return False
 
@@ -63,7 +63,11 @@ class Hand:
     def is_straight_flush(self):
         if not self.all_same_color():
             return False
-        min = self.get_smallest_card()
+        c = self.get_smallest_card()
+        for x in range(1, Hand.MAX_SIZE):
+            c = c.next_by_value()
+            if c not in self._cards:
+                return False
         return True
     
     def all_same_color(self):

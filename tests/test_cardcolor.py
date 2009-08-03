@@ -22,6 +22,10 @@ class TestCardColor(unittest.TestCase):
         except ValueError:
             thrown = True
         self.assertTrue(thrown)
+        
+    def testNext(self):
+        self.assertEquals(CardColor('S').next().color, 'D')
+        self.assertEquals(CardColor('C').next().color, 'S')
 
     def testEqual(self):
         c1 = CardColor('S')
