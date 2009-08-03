@@ -56,14 +56,14 @@ class Hand:
             return False
         if not self.get_smallest_card().value == CardValue('T'):
             return False
-        if not self.all_same_suite():
+        if not self.all_same_color():
             return False
         return True
 
-    def all_same_suite(self):
+    def all_same_color(self):
         first = self.cards[0]
         for c in self.cards:
-            if not first.same_suite(c):
+            if not first.color == c.color:
                 return False
         return True
 

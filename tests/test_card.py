@@ -37,14 +37,4 @@ class TestCard(unittest.TestCase):
         c2 = Card('AD')
         self.assertTrue(c1 < c2)
         
-    def testSameSuite(self):
-        c1 = Card('2D')
-        c2 = Card('AD')
-        self.assertTrue(c1.same_suite(c2))
-        self.assertFalse(c1.same_suite(Card('AS')))
-    
-    def testSameValue(self):
-        c = Card('2D')
-        self.assertTrue(c.same_value(Card('2S')))
-        self.assertFalse(c.same_value(Card('3D')))
 
