@@ -67,6 +67,9 @@ class TestHand(unittest.TestCase):
         c = Card('KD')
         h = Hand(['2H', '3D', '5S', '9C', str(c)])
         self.assertEquals(c, h.get_highest_card())
+        
+    def testAllSameColor(self):
+        self.assertTrue(self.royal_flush.all_same_color())
 
     def testScore(self):
         self.assertTrue(self.royal_flush.score > self.straight_flush.score)

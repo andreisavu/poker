@@ -60,6 +60,12 @@ class Hand:
             return False
         return True
 
+    def is_straight_flush(self):
+        if not self.all_same_color():
+            return False
+        min = self.get_smallest_card()
+        return True
+    
     def all_same_color(self):
         first = self.cards[0]
         for c in self.cards:

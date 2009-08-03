@@ -27,7 +27,13 @@ class CardValue:
         if value not in CardValue._values_score_map.keys():
             raise ValueError('Unknown card value')
         self._value = value
-        self._score = self._values_score_map[value] 
+        self._score = self._values_score_map[value]
+        
+    def next(self):
+        new_score = (self._score + 1) % 16
+        if new_score < 2: new_score += 2
+        keys = [k for k,v in self._values_score_map.items() if v == new_score]
+        return CardValue(keys[0])
 
     def __eq__(self, card):
         if not isinstance(card, CardValue):

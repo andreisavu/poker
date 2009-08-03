@@ -17,6 +17,11 @@ class TestCardValue(unittest.TestCase):
         for k in data.keys():
             c = CardValue(str(k))
             self.assertEquals(str(c), str(c))
+            
+    def testNext(self):
+        self.assertEquals(CardValue('3').next().value, '4')
+        self.assertEquals(CardValue('A').next().value, '2')
+        self.assertEquals(CardValue('9').next().value, 'T')
 
     def testParseFail(self):
         thrown = False

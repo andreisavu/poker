@@ -17,6 +17,10 @@ class TestCard(unittest.TestCase):
             thrown = True
         self.assertTrue(thrown)
         
+    def testNextByValue(self):
+        self.assertEquals(Card('2S').next_by_value(), Card('3S'))
+        self.assertEquals(Card('AS').next_by_value(), Card('2S'))
+        
     def testEqual(self):
         c1 = Card('2D')
         c2 = Card('2D')
