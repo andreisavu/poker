@@ -38,11 +38,32 @@ class Hand:
     def get_highest_card(self):
         return sorted(self.cards)[-1]
 
+    def get_smallest_card(self):
+        return sorted(self.cards)[0]
+
     def get_score(self):
         if self._score is None:
             self._score = self._compute_score()
         return self._score
 
     def _compute_score(self):
+        if self.is_royal_flush():
+            return 100
         return 0
+
+    def is_royal_flush(self):
+        if not self.get_highest_card().value == CardValue('A'):
+            return False
+        if not self.get_smallest_card().value == CardValue('T'):
+            return False
+        if not self.all_same_suite():
+            return False
+        return True
+
+    def all_same_suite(self):
+        first = self.cards[0]
+        for c in self.cards:
+            if not first.same_suite(c):
+                return False
+        return True
 
