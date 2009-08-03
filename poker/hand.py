@@ -24,8 +24,8 @@ class Hand:
             self.cards.append(c)
         self._name = name
 
-    def get_card(self, n):
-        return self.cards[n-1]
+    def get_card(self, index):
+        return self.cards[index-1]
 
     def contains_any(self, hand):
         for card in hand.cards:
@@ -35,3 +35,6 @@ class Hand:
 
     def get_highest_card(self):
         return sorted(self.cards)[-1]
+
+    
+
