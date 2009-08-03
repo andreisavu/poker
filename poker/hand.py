@@ -49,6 +49,8 @@ class Hand:
     def _compute_score(self):
         if self.is_royal_flush():
             return 100
+        if self.is_straight_flush():
+            return 50 + self.get_highest_card().value.score
         return 0
 
     def is_royal_flush(self):
@@ -69,7 +71,7 @@ class Hand:
             if c not in self._cards:
                 return False
         return True
-    
+        
     def all_same_color(self):
         first = self.cards[0]
         for c in self.cards:

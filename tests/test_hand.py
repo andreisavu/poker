@@ -81,4 +81,5 @@ class TestHand(unittest.TestCase):
 
     def testScore(self):
         self.assertTrue(self.royal_flush.score > self.straight_flush.score)
+        self.assertTrue(self.straight_flush.score > self.four_of_a_kind.score)
 
