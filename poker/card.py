@@ -22,7 +22,10 @@ class Card:
         self._color = CardColor(card[1])
 
     def next_by_value(self):
-        return Card(value = self.value.next(), color=self.color)
+        return Card(value=self.value.next(), color=self.color)
+    
+    def next_by_color(self):
+        return Card(value=self.value, color=self.color.next())
 
     def __eq__(self, card):
         return self.color == card.color and self.value == card.value
