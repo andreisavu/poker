@@ -12,7 +12,6 @@ class Hand:
     
     name = property(lambda self:self._name)
     cards = property(lambda self:self._cards[:])
-    score = property(lambda self:self.get_score())
 
     def __init__(self, cards, name=''):
         if len(cards) != Hand.MAX_SIZE:
@@ -78,4 +77,26 @@ class Hand:
             if not first.color == c.color:
                 return False
         return True
+
+    def __eq__(self, hand):
+        if not isinstance(hand, Hand):
+            raise ValueError('Trying to compare incompatible types')
+        return self.get_score() == hand.get_score()
+
+    def __ne__(self, hand):
+        return not (self == hand)
+    
+    def __lt__(self, hand):
+        if not isinstance(hand, Hand):
+            raise ValueError('Truing to compare incompatible types')
+        return self.get_score() < hand.get_score()
+    
+    def __le__(self, card):
+        return (self < card) or (self == card)
+
+    def __gt__(self, card):
+        return not (self <= card)
+
+    def __ge__(self, card):
+        return not (self < card)
 
