@@ -13,6 +13,12 @@ class Hand:
     name = property(lambda self:self._name)
     cards = property(lambda self:self._cards[:])
 
+    @staticmethod
+    def fromString(str, name=''):
+        """ Create a hand instance by parsing a string with card definitions """
+        cards = filter(None, str.upper().split(' '))
+        return Hand(cards, name)
+
     def __init__(self, cards, name=''):
         if len(cards) != Hand.MAX_SIZE:
             raise ValueError("A hand should contain %d cards" % Hand.MAX_SIZE)

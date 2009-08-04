@@ -48,6 +48,11 @@ class TestHand(unittest.TestCase):
         except ValueError, e:
             thrown = True
         self.assertTrue(thrown)
+        
+    def testFromStr(self):
+        str = '2H 3D 5S 9S KS'
+        h = Hand.fromString(str)
+        self.assertEquals(h.cards[0].value, CardValue('2'))
 
     def testContainsAny(self):
         h1 = Hand(['2H', '3D', '5S', '9C', 'KD'])
