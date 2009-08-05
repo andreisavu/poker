@@ -15,3 +15,15 @@ class TestGameLoader(unittest.TestCase):
         games = GameLoader.from_file(self.input, ['White', 'Black'])
         for g in games:
             self.assertEquals(len(g.hands), 2)
+            
+    def testFullCycle(self):
+        games = GameLoader.from_file(self.input, ['White', 'Black'])
+        output = map(lambda s:s.strip("\n"), open(self.output).readlines())
+        line = 0
+        for g in games:
+            h = g.get_winner()
+            if h:
+                self.assertEquals(output[line], "%s wins." % h.name)
+            else:
+                self.assertEquals(output[line], 'Tie.')
+            line += 1
