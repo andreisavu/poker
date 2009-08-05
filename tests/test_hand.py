@@ -49,9 +49,9 @@ class TestHand(unittest.TestCase):
             thrown = True
         self.assertTrue(thrown)
         
-    def testFromStr(self):
+    def testFromString(self):
         str = '2H 3D 5S 9S KS'
-        h = Hand.fromString(str)
+        h = Hand.from_string(str)
         self.assertEquals(h.cards[0].value, CardValue('2'))
 
     def testContainsAny(self):

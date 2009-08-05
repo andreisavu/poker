@@ -14,7 +14,7 @@ class Hand:
     cards = property(lambda self:self._cards[:])
 
     @staticmethod
-    def fromString(str, name=''):
+    def from_string(str, name=''):
         """ Create a hand instance by parsing a string with card definitions """
         cards = filter(None, str.upper().split(' '))
         return Hand(cards, name)
