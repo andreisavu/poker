@@ -58,5 +58,10 @@ class TestCheckers(unittest.TestCase):
         self.assertTrue(check.match(self.two_pair))
         self.assertFalse(check.match(self.straight_flush))
 
-              
+    def testPair(self):
+        check = PairChecker()
+        self.assertTrue(check.match(self.pair))
+        self.assertFalse(check.match(self.straight_flush))
+
+             
 

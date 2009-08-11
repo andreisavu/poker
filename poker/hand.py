@@ -62,7 +62,7 @@ class Hand(object):
         check, level = checks.match(self)
         if check is None:
             return 0
-        return 1000 * level + check.offset()
+        return 10000 * level + check.offset()
 
     def all_same_color(self):
         first = self.cards[0]

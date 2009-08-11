@@ -147,8 +147,20 @@ class TwoPairChecker(_HandChecker):
         return self._offset
 
 class PairChecker(_HandChecker):
-    def match(self, hand): return False
-    def offset(self): return 0
+
+    def __init__(self):
+        self._offset = 0
+
+    def match(self, hand): 
+        counts = hand.counts_by_value()
+        for k, v in counts.items():
+            if v == 2:
+                self._offset = k
+                return True
+        return False
+
+    def offset(self):
+        return self._offset
 
 class DefaultChecker(_HandChecker):
 
@@ -157,7 +169,7 @@ class DefaultChecker(_HandChecker):
 
     def match(self, hand):
         cards = sorted(hand.cards, reverse=True)
-        self._offset = cards[0].value.score * 10
+        self._offset = cards[0].value.score * 20
         self._offset += cards[1].value.score
         return True
 
