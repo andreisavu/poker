@@ -52,31 +52,12 @@ class Hand(object):
         return self._score
 
     def _compute_score(self):
-        if self.is_royal_flush():
-            return 100
-        if self.is_straight_flush():
-            return 50 + self.get_highest_card().value.score
-        return 0
+        import checks
+        check, level = checks.match(self)
+        if check is None:
+            return 0
+        return 1000 * level + check.offset()
 
-    def is_royal_flush(self):
-        if not self.get_highest_card().value == CardValue('A'):
-            return False
-        if not self.get_smallest_card().value == CardValue('T'):
-            return False
-        if not self.all_same_color():
-            return False
-        return True
-
-    def is_straight_flush(self):
-        if not self.all_same_color():
-            return False
-        c = self.get_smallest_card()
-        for x in range(1, Hand.MAX_SIZE):
-            c = c.next_by_value()
-            if c not in self._cards:
-                return False
-        return True
-        
     def all_same_color(self):
         first = self.cards[0]
         for c in self.cards:

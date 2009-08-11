@@ -8,3 +8,5 @@ from test_cardvalue import *
 from test_cardcolor import *
 from test_game import *
 from test_gameloader import *
+from test_checks import *
+
