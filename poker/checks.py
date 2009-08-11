@@ -52,6 +52,8 @@ class FourOfAKindChecker(_HandChecker):
                 counts[score] += 1
             else:
                 counts[score] = 1
+        if len(counts) != 2:
+            return False
         for k,v in counts.items():
             if v == 4:
                 self._offset = k
@@ -61,16 +63,87 @@ class FourOfAKindChecker(_HandChecker):
     def offset(self):
         return self._offset
 
+class FullHouseChecker(_HandChecker):
+
+    def __init__(self):
+        self._offset = 0
+
+    def match(self, hand):
+        counts = {}
+        for card in hand.cards:
+            score = card.value.score
+            if score in counts:
+                counts[score] += 1
+            else:
+                counts[score] = 1
+
+        if len(counts) != 2:
+            return False
+        d = counts.items()
+        if d[0][1] != 2 and d[0][1] != 3:
+            return False
+
+        if d[0][1] == 2:
+            self._offset = d[0][0]
+        else:
+            self._offset = d[1][0]
+        return True
+
+    def offset(self):
+        return self._offset
+
+class FlushChecker(_HandChecker):
+    def match(self, hand): return False
+    def offset(self): return 0
+
+class StraightChecker(_HandChecker):
+    def match(self, hand): return False
+    def offset(self): return 0
+
+class ThreeOfAKindChecker(_HandChecker):
+    def match(self, hand): return False
+    def offset(self): return 0
+
+class TwoPairChecker(_HandChecker):
+    def match(self, hand): return False
+    def offset(self): return 0
+
+class PairChecker(_HandChecker):
+    def match(self, hand): return False
+    def offset(self): return 0
+
+class DefaultChecker(_HandChecker):
+
+    def __init__(self):
+        self._offset = 0
+
+    def match(self, hand):
+        cards = sorted(hand.cards, reverse=True)
+        self._offset = cards[0].value.score * 10
+        self._offset += cards[1].value.score
+        return True
+
+    def offset(self):
+        return self._offset
+
 def match(hand):
     checks = [
         RoyalFlushChecker(),
         StraightFlushChecker(),
-        FourOfAKindChecker()
+        FourOfAKindChecker(),
+        FullHouseChecker(),
+        FlushChecker(),
+        StraightFlushChecker(),
+        ThreeOfAKindChecker(),
+        TwoPairChecker(),
+        PairChecker(),
+        DefaultChecker()
     ]
     count = 0
     for check in checks:
         if check.match(hand):
             return check, len(checks)-count
         count += 1
+    
     return None, None
 

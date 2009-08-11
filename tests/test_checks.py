@@ -33,3 +33,8 @@ class TestCheckers(unittest.TestCase):
         self.assertTrue(check.match(self.four_of_a_kind))
         self.assertFalse(check.match(self.straight_flush))
 
+    def testFullHouse(self):
+        check = FullHouseChecker()
+        self.assertTrue(check.match(self.full_house))
+        self.assertFalse(check.match(self.two_pair))
+
