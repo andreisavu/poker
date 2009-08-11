@@ -27,3 +27,4 @@ class TestGameLoader(unittest.TestCase):
             else:
                 self.assertEquals(output[line], 'Tie.')
             line += 1
+

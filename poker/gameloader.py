@@ -10,9 +10,13 @@ class GameLoader:
     @staticmethod
     def from_file(file, names):
         """ Create a new loader from a file """
-        f = open(file)
+        return GameLoader.from_handle(open(file), names)
+
+    @staticmethod
+    def from_handle(handle, names):
+        """ Create a new loader from a file like object """
         data = []
-        for l in f.xreadlines():
+        for l in handle.xreadlines():
             parts = filter(None, l.strip("\n").upper().split(' '))
             data.append(parts)
         return GameLoader(data, names)
