@@ -40,6 +40,12 @@ class Hand(object):
                 return True
         return False
 
+    def contains_value(self, value):
+        for card in self._cards:
+            if card.value == value:
+                return True
+        return False
+
     def get_highest_card(self):
         return sorted(self.cards)[-1]
 
@@ -62,6 +68,14 @@ class Hand(object):
         first = self.cards[0]
         for c in self.cards:
             if not first.color == c.color:
+                return False
+        return True
+
+    def in_sequence(self):
+        c = self.get_smallest_card()
+        for x in range(1, Hand.MAX_SIZE):
+            c = c.next_by_value()
+            if not self.contains_value(c.value):
                 return False
         return True
 

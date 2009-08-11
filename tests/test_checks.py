@@ -38,3 +38,8 @@ class TestCheckers(unittest.TestCase):
         self.assertTrue(check.match(self.full_house))
         self.assertFalse(check.match(self.two_pair))
 
+    def testFlush(self):
+        check = FlushChecker()
+        self.assertTrue(check.match(self.flush))
+        self.assertFalse(check.match(self.straight_flush))
+

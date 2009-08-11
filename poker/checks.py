@@ -28,11 +28,8 @@ class StraightFlushChecker(_HandChecker):
     def match(self, hand):
         if not hand.all_same_color():
             return False
-        c = hand.get_smallest_card()
-        for x in range(1, Hand.MAX_SIZE):
-            c = c.next_by_value()
-            if c not in hand.cards:
-                return False
+        if not hand.in_sequence():
+            return False
         self._offset = hand.get_highest_card().value.score
         return True
      
@@ -80,8 +77,19 @@ class FullHouseChecker(_HandChecker):
         return self._offset
 
 class FlushChecker(_HandChecker):
-    def match(self, hand): return False
-    def offset(self): return 0
+    def __init__(self):
+        self._offset = 0
+
+    def match(self, hand):
+        if not hand.all_same_color():
+            return False
+        if hand.in_sequence():
+            return False
+        self._offset = hand.get_highest_card().value.score
+        return True 
+
+    def offset(self):
+        return self._offset
 
 class StraightChecker(_HandChecker):
     def match(self, hand): return False
