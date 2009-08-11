@@ -11,7 +11,7 @@ class TestCheckers(unittest.TestCase):
         self.four_of_a_kind = Hand(['6H', 'JS', 'JD', 'JH', 'JC'])
         self.full_house = Hand(['QH', 'QS', 'KD', 'KC', 'KH'])
         self.flush = Hand(['AC', '5C', '7C', '9C', 'JC'])
-        self.straight = Hand(['8H', '9C', 'TC', 'JD', 'QS'])
+        self.straight = Hand(['7H', '8C', '9C', 'TD', 'JS'])
         self.three_of_a_kind = Hand(['7H', 'TC', 'KH', 'KD', 'KS'])
         self.two_pair = Hand(['4H', 'JS', 'JH', 'QC', 'QD'])
         self.pair = Hand(['2D', '6H', '7D', 'TS', 'TC'])
@@ -42,4 +42,11 @@ class TestCheckers(unittest.TestCase):
         check = FlushChecker()
         self.assertTrue(check.match(self.flush))
         self.assertFalse(check.match(self.straight_flush))
+
+    def testStraight(self):
+        check = StraightChecker()
+        self.assertTrue(check.match(self.straight))
+        self.assertFalse(check.match(self.straight_flush))
+
+       
 

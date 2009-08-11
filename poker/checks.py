@@ -92,8 +92,22 @@ class FlushChecker(_HandChecker):
         return self._offset
 
 class StraightChecker(_HandChecker):
-    def match(self, hand): return False
-    def offset(self): return 0
+    def __init__(self):
+        self._offset = 0
+
+    def match(self, hand):
+        if hand.all_same_color():
+            return False
+        if not hand.in_sequence():
+            return False 
+        for value in ['2', '3', 'Q', 'K', 'A']:
+            if hand.contains_value(CardValue(value)):
+                return False
+        self._offset = hand.get_highest_card().value.score
+        return True
+ 
+    def offset(self):
+        return self._offset
 
 class ThreeOfAKindChecker(_HandChecker):
     def match(self, hand): return False
