@@ -1,7 +1,7 @@
 
 from card import *
 
-class Hand:
+class Hand(object):
     """
     A full poker hand
 

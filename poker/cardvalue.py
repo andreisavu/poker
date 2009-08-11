@@ -1,23 +1,17 @@
 
-class CardValue:
+class CardValue(object):
 
     _values_score_map = {
-        '2' : 2,
-        '3' : 3,
-        '4' : 4,
-        '5' : 5,
-        '6' : 6,
-        '7' : 7,
-        '8' : 8,
-        '9' : 9,
-        'T' : 10,
-        'J' : 12,
-        'Q' : 13,
-        'K' : 14,
+        '2' : 2, '3' : 3,
+        '4' : 4, '5' : 5,
+        '6' : 6, '7' : 7,
+        '8' : 8, '9' : 9,
+        'T' : 10, 'J' : 12,
+        'Q' : 13, 'K' : 14,
         'A' : 15
     }
 
-    value = property(lambda self: self._value)
+    value = property(lambda self: self._value, lambda self,v:self.parse(v))
     score = property(lambda self: self._score)
 
     def __init__(self, value):

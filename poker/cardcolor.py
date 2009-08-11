@@ -1,7 +1,7 @@
 
-class CardColor:
+class CardColor(object):
 
-    color = property(lambda self:self._color)
+    color = property(lambda self:self._color, lambda self,c:self.parse(c))
 
     def __init__(self, color):
         self.parse(color)
