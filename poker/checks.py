@@ -45,13 +45,7 @@ class FourOfAKindChecker(_HandChecker):
         self._offset = 0
 
     def match(self, hand):
-        counts = {}
-        for card in hand.cards:
-            score = card.value.score
-            if score in counts:
-                counts[score] += 1
-            else:
-                counts[score] = 1
+        counts = hand.counts_by_value()
         if len(counts) != 2:
             return False
         for k,v in counts.items():
@@ -69,14 +63,7 @@ class FullHouseChecker(_HandChecker):
         self._offset = 0
 
     def match(self, hand):
-        counts = {}
-        for card in hand.cards:
-            score = card.value.score
-            if score in counts:
-                counts[score] += 1
-            else:
-                counts[score] = 1
-
+        counts = hand.counts_by_value()
         if len(counts) != 2:
             return False
         d = counts.items()

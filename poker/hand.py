@@ -65,6 +65,17 @@ class Hand(object):
                 return False
         return True
 
+    def counts_by_value(self):
+        counts = {}
+        for card in self._cards:
+            score = card.value.score
+            if score in counts:
+                counts[score] += 1
+            else:
+                counts[score] = 1
+        return counts
+
+
     def __eq__(self, hand):
         if not isinstance(hand, Hand):
             raise ValueError('Trying to compare incompatible types')
