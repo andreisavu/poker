@@ -28,3 +28,8 @@ class TestCheckers(unittest.TestCase):
         self.assertTrue(check.match(self.straight_flush))
         self.assertFalse(check.match(self.four_of_a_kind))
 
+    def testFourOfAKind(self):
+        check = FourOfAKindChecker()
+        self.assertTrue(check.match(self.four_of_a_kind))
+        self.assertFalse(check.match(self.straight_flush))
+

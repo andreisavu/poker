@@ -41,11 +41,25 @@ class StraightFlushChecker(_HandChecker):
 
 class FourOfAKindChecker(_HandChecker):
     
+    def __init__(self):
+        self._offset = 0
+
     def match(self, hand):
+        counts = {}
+        for card in hand.cards:
+            score = card.value.score
+            if score in counts:
+                counts[score] += 1
+            else:
+                counts[score] = 1
+        for k,v in counts.items():
+            if v == 4:
+                self._offset = k
+                return True
         return False
 
     def offset(self):
-        return 0
+        return self._offset
 
 def match(hand):
     checks = [
