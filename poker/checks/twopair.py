@@ -17,6 +17,9 @@ class TwoPairChecker(object):
             return True
         return False
 
+    def explain(self):
+        return "Two pair"
+
     def offset(self):
         return self._offset
 

@@ -12,6 +12,9 @@ class ThreeOfAKindChecker(object):
                 return True
         return False
 
+    def explain(self):
+        return "Three of a kind"
+
     def offset(self): 
         return self._offset
 

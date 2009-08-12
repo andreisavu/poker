@@ -18,6 +18,9 @@ class FullHouseChecker(object):
             self._offset = d[1][0]
         return True
 
+    def explain(self):
+        return "Full house"
+
     def offset(self):
         return self._offset
 

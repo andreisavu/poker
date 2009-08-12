@@ -11,6 +11,9 @@ class FlushChecker(object):
         self._offset = hand.get_highest_card().value.score
         return True 
 
+    def explain(self):
+        return "Flush"
+
     def offset(self):
         return self._offset
 

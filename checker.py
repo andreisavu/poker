@@ -15,7 +15,7 @@ if __name__ == '__main__':
     for g in games:
         h = g.get_winner()
         if h:
-            print "%s wins." % h.name
+            print "%s wins(%s)." % (h.name, h.explain_score())
         else:
             print 'Tie.'
  

@@ -12,6 +12,9 @@ class PairChecker(object):
                 return True
         return False
 
+    def explain(self):
+        return "Pair"
+
     def offset(self):
         return self._offset
 

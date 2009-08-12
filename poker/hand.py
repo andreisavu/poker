@@ -54,15 +54,20 @@ class Hand(object):
 
     def get_score(self):
         if self._score is None:
-            self._score = self._compute_score()
+            self._score, self._check = self._compute_score()
         return self._score
+
+    def explain_score(self):
+        if self._score is  None:
+            self._score, self._check = self._compute_score()
+        return self._check.explain()
 
     def _compute_score(self):
         import checks
         check, level = checks.match(self)
         if check is None:
             return 0
-        return 10000 * level + check.offset()
+        return 10000 * level + check.offset(), check
 
     def all_same_color(self):
         first = self.cards[0]

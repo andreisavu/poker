@@ -15,6 +15,9 @@ class StraightChecker(object):
                 return False
         self._offset = hand.get_highest_card().value.score
         return True
+
+    def explain(self):
+        return "Straight"
  
     def offset(self):
         return self._offset

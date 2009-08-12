@@ -14,6 +14,9 @@ class FourOfAKindChecker(object):
                 return True
         return False
 
+    def explain(self):
+        return "Four of a kind"
+
     def offset(self):
         return self._offset
 

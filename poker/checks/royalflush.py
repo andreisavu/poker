@@ -12,6 +12,9 @@ class RoyalFlushChecker(object):
             return False
         return True
 
+    def explain(self):
+        return "Royal Flush"
+
     def offset(self):
         return 0
 
