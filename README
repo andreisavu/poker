@@ -7,12 +7,7 @@ Find the winning hand
 Why this demo app?
 ------------------
 
-Learning how to write clean and maintainable code.
-Each commit is a step from the TDD development cycle:
- Red(failing test) 
- Green(all tests working)
- Refactor(make the code beautiful while keeping the tests working)
-
+Learning how to write clean and maintainable code (learning TDD).
 Read more about TDD at http://en.wikipedia.org/wiki/Test-driven_development
 
 Inspired by AgileWorks http://www.agileworks.ro/bucuresti-agile-scrum-more/
@@ -33,9 +28,9 @@ Input file sample
 Expected output file
 ---------------------
 
+Black wins.
 White wins.
-Black wins.
-Black wins.
+White wins.
 Tie.
 
 Card encodings

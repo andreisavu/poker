@@ -1,0 +1,4 @@
+Black wins.
+White wins.
+White wins.
+Tie.
